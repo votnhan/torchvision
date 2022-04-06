@@ -60,8 +60,7 @@ if os.getenv("PYTORCH_VERSION"):
 requirements = [
     "typing_extensions",
     "numpy",
-    "requests",
-    pytorch_dep,
+    "requests"
 ]
 
 # Excluding 8.3.* because of https://github.com/pytorch/vision/issues/4934
@@ -360,9 +359,7 @@ def get_extensions():
 
     if has_ffmpeg:
         ffmpeg_libraries = {"libavcodec", "libavformat", "libavutil", "libswresample", "libswscale"}
-
-        ffmpeg_bin = os.path.dirname(ffmpeg_exe)
-        ffmpeg_root = os.path.dirname(ffmpeg_bin)
+        ffmpeg_root = os.environ['FFMPEG_ROOT']
         ffmpeg_include_dir = os.path.join(ffmpeg_root, "include")
         ffmpeg_library_dir = os.path.join(ffmpeg_root, "lib")
 
